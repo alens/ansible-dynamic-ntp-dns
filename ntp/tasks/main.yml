@@ -1,0 +1,16 @@
+---
+# tasks file for ntp
+# install ntp if not present and configure it
+
+ - name: Install ntp
+   yum: name=ntp state=present
+   tags: ntp
+
+ - name: Configure ntp.conf
+   template: src=ntp.conf.j2 dest=/etc/ntp.conf
+   tags: ntp
+   notify: restart ntp
+
+ - name: check if ntpd is running
+   service: name=ntpd state=running enabled=true
+   tags: ntp

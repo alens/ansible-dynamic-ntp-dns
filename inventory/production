@@ -1,0 +1,7 @@
+[db-servers]
+db-server-1
+db-server-2
+
+[web-servers]
+web-server-1
+web-server-2
