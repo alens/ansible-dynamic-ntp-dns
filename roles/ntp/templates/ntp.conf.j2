@@ -1,0 +1,37 @@
+driftfile /var/lib/ntp/drift
+
+restrict default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+
+restrict 127.0.0.1
+restrict -6 ::1
+
+
+{% if "192.168" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
+
+server {{ ntpserver1 }}  iburst
+server {{ ntpserver2 }}  iburst
+server {{ ntpserver3 }}  iburst
+
+{% elif "192.169" in   ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")    %}
+
+server {{ ntpserver2 }}  iburst
+server {{ ntpserver1 }}  iburst
+server {{ ntpserver3 }}  iburst
+
+{% elif "192.170" in   ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")    %}
+
+server {{ ntpserver3 }}  iburst
+server {{ ntpserver1 }}  iburst
+server {{ ntpserver2 }}  iburst
+
+{% elif "192.171" in   ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")    %}
+
+server {{ ntpserver2 }}  iburst
+server {{ ntpserver1 }}  iburst
+server {{ ntpserver3 }}  iburst
+
+{% endif %}
+includefile /etc/ntp/crypto/pw
+
+keys /etc/ntp/keys

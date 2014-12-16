@@ -1,6 +1,6 @@
 ---
 
- - hosts: all
-   roles:
-      - ntp
-      - resolv 
+ - include: redhat.yml
+    when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 6
+
+

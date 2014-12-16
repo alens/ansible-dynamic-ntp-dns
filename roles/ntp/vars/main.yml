@@ -1,0 +1,6 @@
+---
+# vars file for ntp
+
+ntpserver1: ntp1.domain.local
+ntpserver2: ntp2.domain.local
+ntpserver3: ntp3.domain.local
