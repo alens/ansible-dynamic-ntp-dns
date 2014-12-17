@@ -1,0 +1,25 @@
+{% if "192.166" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
+nameserver {{ nameserver1a }}
+nameserver {{ nameserver2a }}
+nameserver {{ nameserver2b }}
+nameserver {{ nameserver2c }}
+search internetq.corp
+{% elif "192.167" in   ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")    %}
+nameserver {{ nameserver1c }}
+nameserver {{ nameserver2c }}
+nameserver {{ nameserver2a }}
+nameserver {{ nameserver2b }}
+search internetq.corp 
+{% elif "192.168" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
+nameserver {{ nameserver1d }}
+nameserver {{ nameserver2d }}
+nameserver {{ nameserver2c }}
+nameserver {{ nameserver2e }}
+search internetq.corp
+{% elif "192.169" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
+nameserver {{ nameserver1b }}
+nameserver {{ nameserver2b }}
+nameserver {{ nameserver2c }}
+nameserver {{ nameserver2e }}
+search mydomain.local
+{% endif %}

@@ -1,2 +1,11 @@
 ---
 # vars file for resolv
+
+nameserver1a: 192.166.1.10
+nameserver2b: 192.166.1.15
+nameserver1c: 192.167.1.10
+nameserver2c: 192.167.1.15
+nameserver1d: 192.168.1.10
+nameserver2d: 192.168.1.15
+nameserver1e: 192.169.1.10
+nameserver2e: 192.169.1.15
