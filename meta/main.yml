@@ -1,4 +1,5 @@
 ---
+
 galaxy_info:
   author: Alen Stimec 
   description: Dinamic config of ntp or resolv.conf (dns) servers based on server (datacenter location) IP class
