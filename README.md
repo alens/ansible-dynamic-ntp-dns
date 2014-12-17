@@ -1,22 +1,42 @@
-dynamic set NTP or DNS based on destination IP
+Dynamic set NTP or DNS based on destination IP
 =========
 
-Ansible playbook to dynamic set NTP or DNS based on client destination IP 
+Ansible playbook to dynamic set NTP or DNS based on client/server destination IP.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Edit the /var/main.yml file and change the IPs of your `dns` or `ntp` servers.
+Base on the first 2 octets of the IP the client/server has, it will configure the settings.
+
+in case the 1st 2 octets does not suits your needs, change the template regex.
 
 
-Example Playbook
-----------------
+## Variables
+#### Variables for resolv
+```
+nameserverXX: 192.168.x.x 
+nameserverXY: 192.169.x.x 
+```
+#### Variables for ntp
+```
+ntpserver1: ntp1.domain.local
+ntpserver2: ntp2.domain.local
+ntpserver3: ntp3.domain.local
+```
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+#### Example code for ntp j2
+```Jinja2
+{% if "192.168" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
+server {{ ntpserver1 }}  iburst
+server {{ ntpserver2 }}  iburst
+server {{ ntpserver3 }}  iburst
+```
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+
+Supported platforms
+--------------
+RedHat/CentOS 6.x
 
 License
 -------
