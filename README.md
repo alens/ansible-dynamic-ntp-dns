@@ -1,7 +1,7 @@
 Dynamic set NTP or DNS based on destination IP
 =========
 
-Ansible playbook to dynamic set NTP or DNS based on client destination IP.
+Ansible playbook to dynamic set NTP or DNS based on client/server destination IP.
 
 Role Variables
 --------------
@@ -25,14 +25,13 @@ ntpserver2: ntp2.domain.local
 ntpserver3: ntp3.domain.local
 ```
 
-## Example code for ntp j2
-```
+#### Example code for ntp j2
+```Jinja2
 {% if "192.168" in ansible_all_ipv4_addresses[0].split(".")[0:2]|join(".")  %}
 server {{ ntpserver1 }}  iburst
 server {{ ntpserver2 }}  iburst
 server {{ ntpserver3 }}  iburst
 ```
-
 
 
 Supported platforms
