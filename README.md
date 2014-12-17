@@ -14,13 +14,16 @@ in case the 1st 2 octets does not suits your needs, change the template regex.
 
 ## Variables
 #### Variables for resolv
-nameserverXX: 192.168.x.x `the 1st 2 octets matters`
-nameserverXY: 192.169.x.x `...etc`
+`
+nameserverXX: 192.168.x.x 
+nameserverXY: 192.169.x.x 
+`
 #### Variables for ntp
+`
 ntpserver1: ntp1.domain.local
 ntpserver2: ntp2.domain.local
 ntpserver3: ntp3.domain.local
-
+`
 
 ## Example code for ntp j2
 `
