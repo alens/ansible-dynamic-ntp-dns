@@ -2,6 +2,7 @@ Dynamic set NTP or DNS based on destination IP
 =========
 
 Ansible playbook to dynamic set NTP or DNS based on client/server destination IP.
+
 note: You could of course use `group_vars` to get the same result.
 
 Role Variables
